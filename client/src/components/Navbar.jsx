@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import SearchBar from "./SearchBar";
 
 const Navbar = ({ onSelectCategory }) => {
   const getInitialTheme = () => {
@@ -179,39 +180,7 @@ const handleLinkClick = () => {
               <i className="bi bi-cart me-1"></i>
               Cart
             </a>
-            <form className="d-flex" role="search" onSubmit={handleSubmit} id="searchForm">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Type to search"
-                aria-label="Search"
-                value={input}
-                onChange={(e) => handleInputChange(e.target.value)}
-              />
-              {isLoading ? (
-                <button
-                  className="btn btn-outline-success"
-                  type="button"
-                  disabled
-                >
-                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  <span className="visually-hidden">Loading...</span>
-                </button>
-              ) : (
-                <button
-                  className="btn btn-outline-success"
-                  type="submit"
-                >
-                  Search
-                </button>
-              )}
-            </form>
-            
-            {showNoProductsMessage && (
-              <div className="alert alert-warning position-absolute mt-2" style={{ top: "100%", zIndex: 1000 }}>
-                No products found matching your search.
-              </div>
-            )}
+            <SearchBar />
           </div>
         </div>
       </div>

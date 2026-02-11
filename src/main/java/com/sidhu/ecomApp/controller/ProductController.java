@@ -52,7 +52,7 @@ public class ProductController {
     }
 
     @PostMapping("/product")
-    public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart MultipartFile imageFile) {
+    public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart(name = "imageFile") MultipartFile imageFile) {
         Product savedProduct = null;
         try {
             savedProduct = productServie.addOrUpdateProduct(product,imageFile);

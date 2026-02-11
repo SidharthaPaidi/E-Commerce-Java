@@ -71,13 +71,10 @@ const UpdateProduct = () => {
     console.log("images", image)
     console.log("productsdfsfsf", updateProduct)
     const updatedProduct = new FormData();
-    if (imageChanged && image) {
+    // Always send the image file (current or new)
+    if (image) {
       updatedProduct.append("imageFile", image);
-    } else {
-      // Send null or empty value when no image is selected by user
-      updatedProduct.append("imageFile", null);
     }
-    
     updatedProduct.append(
       "product",
       new Blob([JSON.stringify(updateProduct)], { type: "application/json" })
